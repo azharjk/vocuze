@@ -4,7 +4,8 @@
   "description": "Bookshelf API",
   "type": "module",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "lint": "eslint src/"
   },
   "dependencies": {
     "@hapi/hapi": "^20.1.5",

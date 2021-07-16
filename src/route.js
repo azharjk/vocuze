@@ -1,19 +1,19 @@
 import { CreateBookHandler, GetBooksHandler, GetBookHandler } from './handler.js';
 
-export const routes = [
+export default [
   {
     method: 'POST',
     path: '/books',
-    handler: CreateBookHandler
+    handler: CreateBookHandler,
   },
   {
     method: 'GET',
     path: '/books',
-    handler: GetBooksHandler
+    handler: GetBooksHandler,
   },
   {
     method: 'GET',
     path: '/books/{bookId}',
-    handler: GetBookHandler
-  }
+    handler: GetBookHandler,
+  },
 ];

@@ -11,13 +11,13 @@ export const CreateBookHandler = (request, h) => {
     publisher,
     pageCount,
     readPage,
-    reading
-  } = request.payload
+    reading,
+  } = request.payload;
 
   if (name === undefined) {
     const response = h.response({
       status: 'fail',
-      message: 'Gagal menambahkan buku. Mohon isi nama buku'
+      message: 'Gagal menambahkan buku. Mohon isi nama buku',
     });
     response.code(400);
     return response;
@@ -26,7 +26,7 @@ export const CreateBookHandler = (request, h) => {
   if (readPage > pageCount) {
     const response = h.response({
       status: 'fail',
-      message: 'Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount'
+      message: 'Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount',
     });
     response.code(400);
     return response;
@@ -49,10 +49,10 @@ export const CreateBookHandler = (request, h) => {
     finished,
     reading,
     insertedAt,
-    updatedAt
+    updatedAt,
   });
 
-  const OK = books.filter(book => book.id === id);
+  const OK = books.filter((b) => b.id === id);
 
   // Succesfully created book
   if (OK) {
@@ -60,8 +60,8 @@ export const CreateBookHandler = (request, h) => {
       status: 'success',
       message: 'Buku berhasil ditambahkan',
       data: {
-        bookId: id
-      }
+        bookId: id,
+      },
     });
     response.code(201);
     return response;
@@ -70,33 +70,33 @@ export const CreateBookHandler = (request, h) => {
   // Generic error
   const response = h.response({
     status: 'error',
-    message: 'Buku gagal ditambahkan'
+    message: 'Buku gagal ditambahkan',
   });
   response.code(500);
   return response;
-}
+};
 
 export const GetBooksHandler = (request, h) => {
   const response = h.response({
     status: 'success',
     data: {
-      books: books.map(book => ({id: book.id, name: book.name, publisher: book.publisher}))
-    }
+      books: books.map((book) => ({ id: book.id, name: book.name, publisher: book.publisher })),
+    },
   });
   response.code(200);
   return response;
-}
+};
 
 export const GetBookHandler = (request, h) => {
   const { bookId } = request.params;
 
-  const book = books.filter(book => book.id === bookId)[0];
+  const book = books.filter((b) => b.id === bookId)[0];
   if (book) {
     const response = h.response({
       status: 'success',
       data: {
-        book
-      }
+        book,
+      },
     });
     response.code(200);
     return response;
@@ -104,8 +104,8 @@ export const GetBookHandler = (request, h) => {
 
   const response = h.response({
     status: 'fail',
-    message: 'Buku tidak ditemukan'
+    message: 'Buku tidak ditemukan',
   });
   response.code(404);
   return response;
-}
+};
