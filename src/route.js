@@ -1,4 +1,6 @@
-import { CreateBookHandler, GetBooksHandler, GetBookHandler } from './handler.js';
+import CreateBookHandler from './handler/create-book-handler.js';
+import GetBookHandler from './handler/get-book-handler.js';
+import GetBooksHandler from './handler/get-books-handler.js';
 
 export default [
   {

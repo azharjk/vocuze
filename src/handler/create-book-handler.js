@@ -1,8 +1,7 @@
 import { nanoid } from 'nanoid';
+import books from './books.js';
 
-const books = [];
-
-export const CreateBookHandler = (request, h) => {
+export default (request, h) => {
   const {
     name,
     year,
@@ -73,39 +72,5 @@ export const CreateBookHandler = (request, h) => {
     message: 'Buku gagal ditambahkan',
   });
   response.code(500);
-  return response;
-};
-
-export const GetBooksHandler = (request, h) => {
-  const response = h.response({
-    status: 'success',
-    data: {
-      books: books.map((book) => ({ id: book.id, name: book.name, publisher: book.publisher })),
-    },
-  });
-  response.code(200);
-  return response;
-};
-
-export const GetBookHandler = (request, h) => {
-  const { bookId } = request.params;
-
-  const book = books.filter((b) => b.id === bookId)[0];
-  if (book) {
-    const response = h.response({
-      status: 'success',
-      data: {
-        book,
-      },
-    });
-    response.code(200);
-    return response;
-  }
-
-  const response = h.response({
-    status: 'fail',
-    message: 'Buku tidak ditemukan',
-  });
-  response.code(404);
   return response;
 };
