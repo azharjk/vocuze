@@ -2,7 +2,10 @@
   "name": "vocuze",
   "version": "1.0.0",
   "description": "Bookshelf API",
-  "scripts": {},
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js"
+  },
   "dependencies": {
     "@hapi/hapi": "^20.1.5"
   },
