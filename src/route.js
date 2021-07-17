@@ -2,6 +2,7 @@ import CreateBookHandler from './handler/create-book-handler.js';
 import GetBookHandler from './handler/get-book-handler.js';
 import GetBooksHandler from './handler/get-books-handler.js';
 import UpdateBookHandler from './handler/update-book-handler.js';
+import DeleteBookHandler from './handler/delete-book-handler.js';
 
 export default [
   {
@@ -23,5 +24,10 @@ export default [
     method: 'PUT',
     path: '/books/{bookId}',
     handler: UpdateBookHandler,
+  },
+  {
+    method: 'DELETE',
+    path: '/books/{bookId}',
+    handler: DeleteBookHandler,
   },
 ];
